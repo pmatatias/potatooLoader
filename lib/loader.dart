@@ -15,13 +15,19 @@ class _PotatooLoaderState extends State<PotatooLoader>
 
   @override
   void initState() {
-    _controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 2));
-    _animation_rotation = Tween<double>(begin: 0.0, end: 1.0).animate(
-        CurvedAnimation(
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    );
+    _animation_rotation =
+        Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: _controller,
-            curve: const Interval(0.0, 1.0, curve: Curves.easeInOutSine)));
-    _controller.repeat(reverse: false);
+            curve: const Interval(
+              0.0,
+              1.0,
+              curve: Curves.easeInOutSine,
+            )));
+    _controller.repeat(reverse: true);
 
     super.initState();
   }
@@ -48,6 +54,7 @@ class _PotatooLoaderState extends State<PotatooLoader>
                 'assets/me2.png',
               ),
             ),
+           
             RotationTransition(
               turns: _animation_rotation,
               child: buildRing(),
@@ -62,10 +69,18 @@ class _PotatooLoaderState extends State<PotatooLoader>
     return Stack(
       children: [
         CustomPaint(
-          painter: PaintArc(start: 2, sweep: 5, color: Colors.blueAccent),
+          painter: PaintArc(
+            start: 2,
+            sweep: 5,
+            color: Colors.blueAccent,
+          ),
         ),
         CustomPaint(
-          painter: PaintArc(start: 18, sweep: 5, color: Colors.blueAccent),
+          painter: PaintArc(
+            start: 18,
+            sweep: 5,
+            color: Colors.blueAccent,
+          ),
         ),
       ],
     );
